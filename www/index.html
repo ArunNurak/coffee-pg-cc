@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coffee!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=yes"/>
+  <!--<link rel="stylesheet" type="text/css" href="css/chui-ios-3.5.0.min.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="css/chui-android-3.5.0.min.css"/>-->
+  <link rel="stylesheet" type="text/css" href="css/chui-3.5.0.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+
+  <script src="cordova.js"></script>
+  <script src="js/lib/jquery-2.0.3.min.js"></script>
+  <script src="js/lib/chui-3.5.0.js"></script>
+  <script src="js/lib/underscore-1.4.4.min.js"></script>
+  <script src="js/lib/backbone-1.0.0.min.js"></script>
+  <script src="js/lib/backbone.localStorage-min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+</head>
+<body>
+<nav class="current">
+  <a id="goBack" class=''><i class="fa fa-chevron-left">&nbsp;</i></a>
+  <h1>Coffee!</h1>
+</nav>
+
+<article id='main-content' class='current vertical'>
+</article>
+
+<div class="ad current">
+  <p>A classy ad will go here.</p>
+</div>
+
+<script id="home-template" type="text/template">
+  <a id="show-listings" class="button horizontal centered">Show Listings</a>
+  <a id="show-locations" class="button horizontal centered">Show Locations</a>
+  <a id="view-settings" class="button horizontal centered">Settings</a>
+</script>
+
+<script id="map-template" type="text/template">
+</script>
+
+<script id="show-listings-template" type="text/template">
+  <h2 class="">Coffee Shops</h2>
+  <ul id="contacts-list" class="list">
+    <% _.each(shops, function(s) { %>
+    <li class="show-detail">
+      <h3><%= s.businessName %></h3>
+      <h4><%= s.street %></h4>
+      <h4><%= s.city %>,<%= s.state %>&nbsp;<%= s.zip %></h4>
+      <% if (s.phone) { %>
+      <h4 data-rnc-phone="<%= s.phone %>"><%= s.phone %></h4>
+      <% } %>
+    </li>
+    <% }); %>
+  </ul>
+</script>
+
+<script id="show-locations-template" type="text/template">
+  <p>Show Locations</p>
+</script>
+
+<script id="view-details-template" type="text/template">
+  <ul class="list">
+    <li class="comp">
+      <div>
+      <h3><%= businessName %></h3>
+      <h4><%= street %></h4>
+      <h4><%= city %>, <%= state %> <%= zip %></h4>
+      <h4><i><%= distance %> miles away</i></h4>
+      <h4><a data-role="button" href="tel:<%= phone %>">Call <%= phone %></a></h4>
+      </div>
+    </li>
+  </ul>
+</script>
+
+<script id="view-settings-template" type="text/template">
+  <h2>View Settings</h2>
+  <ul id="settings-list" class="list">
+    <li class="comp">
+      <div>
+        <h3>Use GPS</h3>
+      </div>
+      <aside>
+        <span class="switch on" id="usingGps" role="checkbox">
+          <input type="checkbox" id="usingGpsCheckbox" checked="checked">
+        </span>
+      </aside>
+    </li>
+    <li class="comp">
+      <div>
+        <h3>ZIP code</h3>
+      </div>
+      <aside>
+        <input id="zipCode" type="text" pattern="[0-9]*" style="text-align: right;"/>
+      </aside>
+    </li>
+    <li class="comp">
+      <div>
+        <h3>Radius in miles: <span id="currentRadius">0</span></h3>
+      </div>
+      <div>
+        <input type="range" id="rangeRadius" value="25" min="5" max="50" step="5" style="width:100%;">
+      </div>
+    </li>
+  </ul>
+</script>
+
+<!-- define system level stuff -->
+<script src="js/system/main.js"></script>
+<script src="js/system/subSystem.js"></script>
+
+<!-- define models -->
+<script src="js/models/coffeeShop.js"></script>
+<script src="js/models/setting.js"></script>
+
+<!-- define collections -->
+<script src="js/collections/coffeeShops.js"></script>
+
+<!-- define views -->
+<script src="js/views/home.js"></script>
+<script src="js/views/listings.js"></script>
+<script src="js/views/locations.js"></script>
+<script src="js/views/details.js"></script>
+<script src="js/views/settings.js"></script>
+
+<!-- define other objects -->
+<script src="js/system/location.js"></script>
+<script src="js/system/ready.js"></script>
+<script src="js/system/router.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+* {
+    -webkit-user-select: none; /* Disable selection/copy of elements when tapping for a long time */
+    -webkit-touch-callout: none; /* Disable touch callouts */
+}
+
+@font-face {
+	font-family: DroidSans;
+	src: url('../font/DroidSans.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Icomatic';
+	src: url('font/icomatic.svg#icomatic') format('svg'),
+		url('font/icomatic.woff') format("woff"), url('font/icomatic.ttf')
+		format("truetype");
+}
+
+.icomatic {
+	font-family: 'Icomatic', 'SourceSansPro-Regular';
+	font-size: 20px;
+	color: #288EDF;
+	line-height: 1;
+	text-rendering: optimizeLegibility;
+	-webkit-font-feature-settings: "liga", "dlig";
+	-ms-font-feature-settings: "liga", "dlig";
+	-moz-font-feature-settings: "liga", "dlig";
+	-o-font-feature-settings: "liga", "dlig";
+	font-feature-settings: "liga", "dlig";
+	-webkit-font-smoothing: antialiased;
+	/*text-shadow: 1px 1px 1px #000;*/
+}
+
+body {
+	font-family: DroidSans, sans-serif;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+input, textarea, [contenteditable] * {
+    -webkit-user-select: auto; /* Allow selection for input elements and those with contenteditable attribute */
+}
+
+.content-padded {
+    padding: 15px;
+}
+
+a.off {
+    display: none;
+}
+
+#map {
+    padding: 0;
+    margin: 0;
+    width: 100%; /* this isn't really necessary, but let's be clear */
+    height: 240px; /* this will be set dynamically later */
+}
+
+
+/* ==============================
+   ad
+   =========================== */
+.ad {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    padding: 0 15px;
+    background-color: #ffffff;
+    border-top: solid 1px #a7a7aa;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* old flex box */
+
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    -webkit-box-align: center;
+    /* new flex box */
+
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: flex-start;
+    -webkit-align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+nav {
+    background-color: #CC99FF;
+}
+
+
+nav > a, nav > a.button, nav > h1 {
+    color: #fff;
+}
